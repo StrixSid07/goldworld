@@ -125,7 +125,7 @@ export default function CheckoutPage() {
 
       // Razorpay test integration
       const options = {
-        key: "rzp_test_YourTestKey", // Replace with your test key
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || "rzp_test_YourTestKey", // Using environment variable or fallback
         amount: Math.round(getCartTotal() * 1.03 * 100), // Convert to paise
         currency: "INR",
         name: "GoldWorld",
