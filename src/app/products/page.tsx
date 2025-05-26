@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ui/ProductCard";
 import { getAllProducts, getAllCategories } from "@/utils/data";
 import { FaFilter, FaTimes } from "react-icons/fa";
 import type { Product, Category } from "@/utils/data";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
 
@@ -238,5 +238,14 @@ export default function ProductsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Wrap the component that uses useSearchParams with Suspense
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="container mx-auto px-4 py-8">Loading products...</div>}>
+      <ProductsContent />
+    </Suspense>
   );
 } 
