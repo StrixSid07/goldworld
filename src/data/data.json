@@ -1,0 +1,176 @@
+{
+  "categories": [
+    {
+      "id": "gold-coins",
+      "name": "Gold Coins",
+      "description": "Premium quality gold coins for collection and investment"
+    },
+    {
+      "id": "jewelry",
+      "name": "Jewelry",
+      "description": "Exquisite gold jewelry for every occasion"
+    },
+    {
+      "id": "gold-bars",
+      "name": "Gold Bars",
+      "description": "Pure gold bars for investment and wealth preservation"
+    }
+  ],
+  "products": [
+    {
+      "id": "gc001",
+      "name": "24K Gold Coin - 10g",
+      "description": "Pure 24 karat gold coin weighing 10 grams, perfect for gifting and investment.",
+      "price": 69999,
+      "discountPrice": 67999,
+      "categoryId": "gold-coins",
+      "image": "/images/gold-coin-10g.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "10g",
+      "purity": "99.9%"
+    },
+    {
+      "id": "gc002",
+      "name": "22K Gold Coin - 5g",
+      "description": "22 karat gold coin weighing 5 grams with intricate design.",
+      "price": 32999,
+      "discountPrice": 31499,
+      "categoryId": "gold-coins",
+      "image": "/images/gold-coin-5g.jpg",
+      "featured": false,
+      "inStock": true,
+      "weight": "5g",
+      "purity": "91.6%"
+    },
+    {
+      "id": "gc003",
+      "name": "24K Gold Coin - 20g",
+      "description": "Premium 24 karat gold coin weighing 20 grams for serious investors.",
+      "price": 129999,
+      "discountPrice": 127999,
+      "categoryId": "gold-coins",
+      "image": "/images/gold-coin-20g.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "20g",
+      "purity": "99.9%"
+    },
+    {
+      "id": "j001",
+      "name": "Gold Necklace with Diamond Pendant",
+      "description": "Elegant 22K gold necklace with a stunning diamond pendant, perfect for special occasions.",
+      "price": 85999,
+      "discountPrice": 82999,
+      "categoryId": "jewelry",
+      "image": "/images/gold-necklace.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "15g",
+      "purity": "91.6%"
+    },
+    {
+      "id": "j002",
+      "name": "Gold Bangles Set",
+      "description": "Set of 4 intricately designed 22K gold bangles for traditional wear.",
+      "price": 159999,
+      "discountPrice": 154999,
+      "categoryId": "jewelry",
+      "image": "/images/gold-bangles.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "30g",
+      "purity": "91.6%"
+    },
+    {
+      "id": "j003",
+      "name": "Gold Earrings",
+      "description": "Beautifully crafted 22K gold earrings with traditional design.",
+      "price": 42999,
+      "discountPrice": 39999,
+      "categoryId": "jewelry",
+      "image": "/images/gold-earrings.jpg",
+      "featured": false,
+      "inStock": true,
+      "weight": "8g",
+      "purity": "91.6%"
+    },
+    {
+      "id": "gb001",
+      "name": "24K Gold Bar - 10g",
+      "description": "LBMA certified 24K gold bar weighing 10 grams with serial number.",
+      "price": 71999,
+      "discountPrice": 69999,
+      "categoryId": "gold-bars",
+      "image": "/images/gold-bar-10g.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "10g",
+      "purity": "99.9%"
+    },
+    {
+      "id": "gb002",
+      "name": "24K Gold Bar - 20g",
+      "description": "LBMA certified 24K gold bar weighing 20 grams with serial number.",
+      "price": 139999,
+      "discountPrice": 136999,
+      "categoryId": "gold-bars",
+      "image": "/images/gold-bar-20g.jpg",
+      "featured": false,
+      "inStock": true,
+      "weight": "20g",
+      "purity": "99.9%"
+    },
+    {
+      "id": "gb003",
+      "name": "24K Gold Bar - 50g",
+      "description": "LBMA certified 24K gold bar weighing 50 grams with serial number.",
+      "price": 339999,
+      "discountPrice": 334999,
+      "categoryId": "gold-bars",
+      "image": "/images/gold-bar-50g.jpg",
+      "featured": true,
+      "inStock": true,
+      "weight": "50g",
+      "purity": "99.9%"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Rajesh Sharma",
+      "comment": "I have been investing in gold coins from GoldWorld for the past 5 years. Their products are authentic and service is excellent.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Priya Patel",
+      "comment": "Purchased a necklace for my wedding. The quality and craftsmanship are outstanding.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Amit Singh",
+      "comment": "Reliable gold investment partner. Transparent pricing and excellent customer service.",
+      "rating": 4
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Are your gold products certified?",
+      "answer": "Yes, all our gold products come with BIS Hallmark certification ensuring authenticity and purity."
+    },
+    {
+      "question": "Do you provide buyback options?",
+      "answer": "Yes, we offer buyback options for all our gold coins and bars at competitive market rates."
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "answer": "We accept all major credit/debit cards, net banking, UPI, and Razorpay for secure online payments."
+    },
+    {
+      "question": "Do you offer home delivery?",
+      "answer": "Yes, we provide insured home delivery across India with free shipping on orders above ₹50,000."
+    }
+  ]
+} 
