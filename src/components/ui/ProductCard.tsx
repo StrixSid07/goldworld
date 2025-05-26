@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   id: string;
@@ -36,12 +39,22 @@ const ProductCard = ({
   const discountPercentage = Math.round(((price - discountPrice) / price) * 100);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+    <motion.div 
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      whileHover={{ y: -5 }}
+    >
       <div className="relative h-48 sm:h-64 bg-gray-200">
         {/* Use a placeholder div until real images are available */}
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center bg-gray-200"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
           <span className="text-gray-500">{name}</span>
-        </div>
+        </motion.div>
         {/* Uncomment when real images are available
         <Image
           src={image}
@@ -62,36 +75,52 @@ const ProductCard = ({
 
         <div className="flex items-center justify-between mb-3">
           <div>
-            <span className="text-lg font-bold text-amber-800">{formatPrice(discountPrice)}</span>
+            <motion.span 
+              className="text-lg font-bold text-amber-800"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {formatPrice(discountPrice)}
+            </motion.span>
             {discountPercentage > 0 && (
               <>
                 <span className="text-sm text-gray-500 line-through ml-2">
                   {formatPrice(price)}
                 </span>
-                <span className="ml-2 text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded">
+                <motion.span 
+                  className="ml-2 text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.2 }}
+                >
                   {discountPercentage}% OFF
-                </span>
+                </motion.span>
               </>
             )}
           </div>
         </div>
 
         <div className="flex space-x-2 mt-auto">
-          <Link
-            href={`/products/${id}`}
-            className="flex-1 py-2 px-4 bg-amber-100 hover:bg-amber-200 text-amber-900 text-center rounded-md transition-colors font-medium"
-          >
-            View Details
-          </Link>
-          <button
+          <motion.div className="flex-1" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href={`/products/${id}`}
+              className="block w-full py-2 px-4 bg-amber-100 hover:bg-amber-200 text-amber-900 text-center rounded-md transition-colors font-medium"
+            >
+              View Details
+            </Link>
+          </motion.div>
+          <motion.button
             className="p-2 bg-amber-800 hover:bg-amber-900 text-white rounded-md transition-colors"
             aria-label="Add to cart"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <FaShoppingCart />
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

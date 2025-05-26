@@ -112,7 +112,7 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -186,9 +186,8 @@ export default function CheckoutPage() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.fullName ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.fullName ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.fullName && (
                     <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
@@ -205,9 +204,8 @@ export default function CheckoutPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.email ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.email && (
                     <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -224,9 +222,8 @@ export default function CheckoutPage() {
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.mobile ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.mobile ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.mobile && (
                     <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
@@ -243,9 +240,8 @@ export default function CheckoutPage() {
                     rows={3}
                     value={formData.address}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.address ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.address ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.address && (
                     <p className="text-red-500 text-sm mt-1">{errors.address}</p>
@@ -262,9 +258,8 @@ export default function CheckoutPage() {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.city ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.city ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.city && (
                     <p className="text-red-500 text-sm mt-1">{errors.city}</p>
@@ -281,9 +276,8 @@ export default function CheckoutPage() {
                     name="state"
                     value={formData.state}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.state ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.state ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.state && (
                     <p className="text-red-500 text-sm mt-1">{errors.state}</p>
@@ -300,9 +294,8 @@ export default function CheckoutPage() {
                     name="pincode"
                     value={formData.pincode}
                     onChange={handleChange}
-                    className={`w-full border ${
-                      errors.pincode ? "border-red-500" : "border-gray-300"
-                    } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
+                    className={`w-full border ${errors.pincode ? "border-red-500" : "border-gray-300"
+                      } rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400`}
                   />
                   {errors.pincode && (
                     <p className="text-red-500 text-sm mt-1">{errors.pincode}</p>
@@ -321,11 +314,10 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`flex items-center justify-center ${
-                    isSubmitting
+                  className={`flex items-center justify-center ${isSubmitting
                       ? "bg-amber-500"
                       : "bg-amber-800 hover:bg-amber-900"
-                  } text-white px-6 py-3 rounded-md font-semibold transition-colors`}
+                    } text-white px-6 py-3 rounded-md font-semibold transition-colors`}
                 >
                   {isSubmitting ? (
                     "Processing..."
@@ -406,11 +398,13 @@ export default function CheckoutPage() {
               securely through Razorpay.
             </p>
             <div className="flex items-center justify-between">
-              <img
-                src="/images/payment-methods.png"
-                alt="Payment Methods"
-                className="h-8"
-              />
+              <div className="flex items-center space-x-4">
+                <img
+                  src="/images/RazorPay.png"
+                  alt="RazorPay"
+                  className="h-24"
+                />
+              </div>
               <FaLock className="text-amber-800" />
             </div>
           </div>

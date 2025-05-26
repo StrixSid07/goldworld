@@ -1,13 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Handle scroll effect for header
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,69 +40,113 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-amber-800 text-white">
+    <motion.header 
+      className={`${scrolled ? "bg-amber-900 shadow-md" : "bg-amber-800"} text-white sticky top-0 z-50`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
-            <h1 className="text-2xl font-bold text-amber-200">
-              Gold<span className="text-white">World</span>
-            </h1>
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href="/" className="flex items-center">
+              <h1 className="text-2xl font-bold text-amber-200">
+                Gold<span className="text-white">World</span>
+              </h1>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <Link
+              <motion.div
                 key={item.path}
-                href={item.path}
-                className={`hover:text-amber-200 transition-colors ${
-                  pathname === item.path ? "text-amber-200 font-semibold" : ""
-                }`}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.path}
+                  className={`hover:text-amber-200 transition-colors ${
+                    pathname === item.path ? "text-amber-200 font-semibold" : ""
+                  }`}
+                >
+                  {item.name}
+                  {pathname === item.path && (
+                    <motion.div
+                      className="h-[2px] bg-amber-200 mt-1"
+                      layoutId="navigation-underline"
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Link 
-              href="/cart" 
-              className="flex items-center space-x-1 hover:text-amber-200 transition-colors"
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
-              <FaShoppingCart size={20} />
-              <span className="hidden md:inline">Cart</span>
-            </Link>
+              <Link 
+                href="/cart" 
+                className="flex items-center space-x-1 hover:text-amber-200 transition-colors"
+              >
+                <FaShoppingCart size={20} />
+                <span className="hidden md:inline">Cart</span>
+              </Link>
+            </motion.div>
             
-            <button 
+            <motion.button 
               className="md:hidden text-white focus:outline-none"
               onClick={toggleMenu}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-amber-900 px-4 py-2">
-          <nav className="flex flex-col space-y-3 py-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`hover:text-amber-200 transition-colors ${
-                  pathname === item.path ? "text-amber-200 font-semibold" : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
-    </header>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className="md:hidden bg-amber-900 px-4 py-2"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <nav className="flex flex-col space-y-3 py-3">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.path}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                >
+                  <Link
+                    href={item.path}
+                    className={`hover:text-amber-200 transition-colors ${
+                      pathname === item.path ? "text-amber-200 font-semibold" : ""
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
