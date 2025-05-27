@@ -1,5 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import { FaGem, FaAward, FaUsers, FaHistory } from "react-icons/fa";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Dynamically import icons for better performance
+const FaGem = dynamic(() => import('react-icons/fa').then(mod => mod.FaGem), { ssr: false });
+const FaAward = dynamic(() => import('react-icons/fa').then(mod => mod.FaAward), { ssr: false });
+const FaUsers = dynamic(() => import('react-icons/fa').then(mod => mod.FaUsers), { ssr: false });
+const FaHistory = dynamic(() => import('react-icons/fa').then(mod => mod.FaHistory), { ssr: false });
+
+// Icon placeholder during loading
+const IconPlaceholder = () => <div className="w-8 h-8 bg-amber-200 rounded-full animate-pulse"></div>;
 
 export default function AboutPage() {
   return (
@@ -20,7 +32,9 @@ export default function AboutPage() {
         {/* Our Story */}
         <div className="mb-12">
           <div className="flex items-center mb-6">
-            <FaHistory className="text-amber-600 text-3xl mr-4" />
+            <Suspense fallback={<IconPlaceholder />}>
+              <FaHistory className="text-amber-600 text-3xl mr-4" />
+            </Suspense>
             <h2 className="text-2xl font-bold text-amber-900">Our Story</h2>
           </div>
           <p className="text-gray-700 mb-4">
@@ -44,7 +58,9 @@ export default function AboutPage() {
         {/* Our Values */}
         <div className="mb-12">
           <div className="flex items-center mb-6">
-            <FaGem className="text-amber-600 text-3xl mr-4" />
+            <Suspense fallback={<IconPlaceholder />}>
+              <FaGem className="text-amber-600 text-3xl mr-4" />
+            </Suspense>
             <h2 className="text-2xl font-bold text-amber-900">Our Values</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -82,7 +98,9 @@ export default function AboutPage() {
         {/* Team */}
         <div className="mb-12">
           <div className="flex items-center mb-6">
-            <FaUsers className="text-amber-600 text-3xl mr-4" />
+            <Suspense fallback={<IconPlaceholder />}>
+              <FaUsers className="text-amber-600 text-3xl mr-4" />
+            </Suspense>
             <h2 className="text-2xl font-bold text-amber-900">Our Team</h2>
           </div>
           <p className="text-gray-700 mb-6">
@@ -126,7 +144,9 @@ export default function AboutPage() {
         {/* Certifications */}
         <div className="mb-12">
           <div className="flex items-center mb-6">
-            <FaAward className="text-amber-600 text-3xl mr-4" />
+            <Suspense fallback={<IconPlaceholder />}>
+              <FaAward className="text-amber-600 text-3xl mr-4" />
+            </Suspense>
             <h2 className="text-2xl font-bold text-amber-900">Our Certifications</h2>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -149,6 +169,7 @@ export default function AboutPage() {
           <Link
             href="/contact"
             className="bg-amber-800 hover:bg-amber-900 text-white px-6 py-3 rounded-md inline-block"
+            prefetch={true}
           >
             Contact Us
           </Link>

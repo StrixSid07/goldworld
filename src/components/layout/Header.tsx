@@ -61,24 +61,32 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+            {[
+              { href: "/", label: "Home" },
+              { href: "/products", label: "Products" },
+              { href: "/services", label: "Services" },
+              { href: "/about", label: "About Us" },
+              { href: "/contact", label: "Contact" },
+            ].map((link) => (
               <motion.div
-                key={item.path}
+                key={link.href}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               >
                 <Link
-                  href={item.path}
-                  className={`hover:text-amber-200 transition-colors ${
-                    pathname === item.path ? "text-amber-200 font-semibold" : ""
+                  href={link.href}
+                  className={`relative hover:text-amber-200 transition-colors ${
+                    pathname === link.href
+                      ? "text-amber-200 font-medium"
+                      : "text-white"
                   }`}
+                  prefetch={true}
                 >
-                  {item.name}
-                  {pathname === item.path && (
-                    <motion.div
-                      className="h-[2px] bg-amber-200 mt-1"
-                      layoutId="navigation-underline"
-                      transition={{ duration: 0.3 }}
+                  {link.label}
+                  {pathname === link.href && (
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute left-0 top-full block h-0.5 w-full bg-amber-200"
                     />
                   )}
                 </Link>
@@ -124,21 +132,28 @@ const Header = () => {
             transition={{ duration: 0.3 }}
           >
             <nav className="flex flex-col space-y-3 py-3">
-              {navItems.map((item, index) => (
+              {[
+                { href: "/", label: "Home" },
+                { href: "/products", label: "Products" },
+                { href: "/services", label: "Services" },
+                { href: "/about", label: "About Us" },
+                { href: "/contact", label: "Contact" },
+              ].map((link, index) => (
                 <motion.div
-                  key={item.path}
+                  key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
                   <Link
-                    href={item.path}
+                    href={link.href}
                     className={`hover:text-amber-200 transition-colors ${
-                      pathname === item.path ? "text-amber-200 font-semibold" : ""
+                      pathname === link.href ? "text-amber-200 font-semibold" : ""
                     }`}
                     onClick={() => setIsMenuOpen(false)}
+                    prefetch={true}
                   >
-                    {item.name}
+                    {link.label}
                   </Link>
                 </motion.div>
               ))}
