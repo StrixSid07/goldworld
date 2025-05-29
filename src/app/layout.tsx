@@ -11,6 +11,7 @@ import Loading from "./loading";
 const inter = Inter({ 
   subsets: ["latin"],
   display: 'swap',  // Ensure text remains visible during font loading
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -24,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} min-h-screen flex flex-col bg-amber-50`}>
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen flex flex-col bg-amber-50">
         <CartProvider>
           <Header />
           <main className="flex-grow">

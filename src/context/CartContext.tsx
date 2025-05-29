@@ -19,12 +19,14 @@ interface CartContextType {
   clearCart: () => void;
   getCartTotal: () => number;
   getItemCount: () => number;
+  isLoaded: boolean;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Load cart from localStorage on initial render
   useEffect(() => {
@@ -37,12 +39,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         localStorage.removeItem("cart");
       }
     }
+    setIsLoaded(true);
   }, []);
 
   // Update localStorage when cart changes
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isLoaded) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+  }, [cartItems, isLoaded]);
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCartItems((prevItems) => {
@@ -108,6 +113,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         getCartTotal,
         getItemCount,
+        isLoaded,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,16 +47,23 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-1">
         <div className="flex justify-between items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
             <Link href="/" className="flex items-center">
-              <h1 className="text-2xl font-bold text-amber-200">
-                Gold<span className="text-white">World</span>
-              </h1>
+              <div className="relative h-20 w-20 mr-2 overflow-hidden flex items-center justify-center">
+                <Image 
+                  src="/images/SiteLogo.png" 
+                  alt="GoldWorld Logo"
+                  width={180}
+                  height={180}
+                  className="object-contain rounded-md"
+                  priority
+                />
+              </div>
             </Link>
           </motion.div>
 

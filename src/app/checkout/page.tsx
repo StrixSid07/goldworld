@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { FaArrowLeft, FaShoppingCart, FaLock } from "react-icons/fa";
+import Image from "next/image";
 
 interface FormData {
   fullName: string;
@@ -18,7 +19,7 @@ interface FormData {
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { cartItems, getCartTotal, clearCart } = useCart();
+  const { cartItems, getCartTotal, clearCart, isLoaded } = useCart();
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -30,13 +31,17 @@ export default function CheckoutPage() {
   });
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Redirect to cart if cart is empty
-    if (cartItems.length === 0) {
+    // Set isClient to true when component mounts on client
+    setIsClient(true);
+
+    // Only redirect if cart is loaded and empty
+    if (isLoaded && cartItems.length === 0) {
       router.push("/cart");
     }
-  }, [cartItems, router]);
+  }, [cartItems, router, isLoaded]);
 
   // Format currency
   const formatPrice = (price: number) => {
@@ -125,7 +130,7 @@ export default function CheckoutPage() {
 
       // Razorpay test integration
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || "rzp_test_ZsB0mYazjU3r7t",
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || "rzp_test_13rEAcOk3FOiaR",
         amount: Math.round(getCartTotal() * 1.03 * 100), // Convert to paise
         currency: "INR",
         name: "GoldWorld",
@@ -159,6 +164,16 @@ export default function CheckoutPage() {
       setIsSubmitting(false);
     }
   };
+
+  // Show loading state while cart is loading from localStorage
+  if (!isLoaded) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-amber-900 mb-8">Checkout</h1>
+        <p>Loading checkout...</p>
+      </div>
+    );
+  }
 
   if (cartItems.length === 0) {
     return null; // Will redirect to cart

@@ -118,8 +118,8 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-amber-900 mb-1">Our Store</h3>
                   <p className="text-gray-700">
-                    123 Gold Street, Zaveri Bazaar<br />
-                    Mumbai, Maharashtra, India - 400001
+                    Plot NO 602, GIDC, SECTOR-28<br />
+                    Gandhinagar, 382001
                   </p>
                 </div>
               </div>
@@ -128,8 +128,7 @@ export default function ContactPage() {
                 <FaPhone className="text-amber-600 text-xl mt-1 mr-4" />
                 <div>
                   <h3 className="font-semibold text-amber-900 mb-1">Phone</h3>
-                  <p className="text-gray-700">+91 98765 43210</p>
-                  <p className="text-gray-700">+91 22 1234 5678</p>
+                  <p className="text-gray-700">+91 9825 052599</p>
                 </div>
               </div>
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
-import AnimateInView from "@/components/animations/AnimateInView";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,7 +36,17 @@ const Footer = () => {
         >
           {/* Company Info */}
           <motion.div variants={fadeInUp}>
-            <h3 className="text-xl font-semibold mb-4 text-amber-200">GoldWorld</h3>
+            <div className="flex items-center mb-4">
+              <div className="relative h-24 w-24 mr-2 overflow-hidden flex items-center justify-center">
+                <Image 
+                  src="/images/SiteLogo.png" 
+                  alt="GoldWorld Logo"
+                  width={144}
+                  height={144}
+                  className="object-contain rounded-md"
+                />
+              </div>
+            </div>
             <p className="mb-4">Your trusted partner for premium gold jewelry, coins, and bars.</p>
             <div className="flex space-x-4">
               <motion.a 
@@ -137,7 +147,7 @@ const Footer = () => {
                 transition={{ duration: 0.2 }}
               >
                 <FaMapMarkerAlt className="mt-1 text-amber-200" />
-                <span>123 Gold Street, Mumbai, Maharashtra, India - 400001</span>
+                <span>Plot NO 602, GIDC, SECTOR-28, Gandhinagar, 382001</span>
               </motion.li>
               <motion.li 
                 className="flex items-center space-x-3"
@@ -145,7 +155,7 @@ const Footer = () => {
                 transition={{ duration: 0.2 }}
               >
                 <FaPhone className="text-amber-200" />
-                <span>+91 98765 43210</span>
+                <span>+91 9825 052599</span>
               </motion.li>
               <motion.li 
                 className="flex items-center space-x-3"

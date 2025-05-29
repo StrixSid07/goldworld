@@ -95,52 +95,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Team */}
-        <div className="mb-12">
-          <div className="flex items-center mb-6">
-            <Suspense fallback={<IconPlaceholder />}>
-              <FaUsers className="text-amber-600 text-3xl mr-4" />
-            </Suspense>
-            <h2 className="text-2xl font-bold text-amber-900">Our Team</h2>
-          </div>
-          <p className="text-gray-700 mb-6">
-            At GoldWorld, we have a dedicated team of gold experts, designers, and customer service 
-            professionals who work together to provide you with the best gold buying experience.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-24 h-24 bg-amber-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-amber-800 text-xl">RS</span>
-              </div>
-              <h3 className="text-xl font-semibold text-amber-900 mb-1">Rajesh Sharma</h3>
-              <p className="text-amber-700 mb-3">Founder & CEO</p>
-              <p className="text-gray-700 text-sm">
-                30+ years of experience in the gold industry
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-24 h-24 bg-amber-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-amber-800 text-xl">AP</span>
-              </div>
-              <h3 className="text-xl font-semibold text-amber-900 mb-1">Anjali Patel</h3>
-              <p className="text-amber-700 mb-3">Chief Designer</p>
-              <p className="text-gray-700 text-sm">
-                Award-winning jewelry designer with international experience
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-24 h-24 bg-amber-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-amber-800 text-xl">VK</span>
-              </div>
-              <h3 className="text-xl font-semibold text-amber-900 mb-1">Vikram Kumar</h3>
-              <p className="text-amber-700 mb-3">Head of Operations</p>
-              <p className="text-gray-700 text-sm">
-                Ensuring smooth delivery and customer satisfaction
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Certifications */}
         <div className="mb-12">
           <div className="flex items-center mb-6">
