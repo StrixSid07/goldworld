@@ -17,6 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "GoldWorld - Premium Gold & Jewelry",
   description: "Buy premium gold coins, bars, and jewelry with assured purity and craftsmanship",
+  // Next.js 13+ automatically uses favicon.ico from app directory
 };
 
 export default function RootLayout({
@@ -26,6 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#b45309" />
+      </head>
       <body className="min-h-screen flex flex-col bg-amber-50">
         <CartProvider>
           <Header />

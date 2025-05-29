@@ -1,0 +1,20 @@
+{
+  "name": "TheGoldWorld - Premium Gold & Jewelry",
+  "short_name": "GoldWorld",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/favicon/faviconworld.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#b45309",
+  "background_color": "#fffbeb"
+} 

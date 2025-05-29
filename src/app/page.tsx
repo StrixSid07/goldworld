@@ -7,6 +7,7 @@ import { getFeaturedProducts, getAllCategories, getAllTestimonials, getAllFAQs }
 import { motion } from "framer-motion";
 import FadeIn from "@/components/animations/FadeIn";
 import AnimateInView from "@/components/animations/AnimateInView";
+import Image from "next/image";
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
@@ -33,8 +34,19 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-amber-800 to-amber-900 text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-16 md:py-24">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/homesectionbgimage/homebgimage.jpg" 
+            alt="Gold World Hero Background"
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-900/80 to-amber-800/80"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -99,35 +111,54 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {categories.map((category, index) => (
-              <motion.div key={category.id} variants={fadeInUp}>
-                <Link
-                  href={`/products?category=${category.id}`}
-                  className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-                >
-                  <motion.div 
-                    className="h-40 bg-amber-100 flex items-center justify-center"
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.3 }}
+            {categories.map((category, index) => {
+              // Map category ID to image path
+              const categoryImages = {
+                "gold-coins": "/images/categories/coincategorie.jpg",
+                "jewelry": "/images/categories/jwelrycategorie.jpg",
+                "gold-bars": "/images/categories/goldbarscategorie-removebg-preview.png"
+              };
+              
+              const imagePath = categoryImages[category.id as keyof typeof categoryImages];
+              
+              return (
+                <motion.div key={category.id} variants={fadeInUp}>
+                  <Link
+                    href={`/products?category=${category.id}`}
+                    className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
                   >
-                    <h3 className="text-xl font-semibold text-amber-900">
-                      {category.name}
-                    </h3>
-                  </motion.div>
-                  <div className="p-4">
-                    <p className="text-gray-600 mb-4">{category.description}</p>
                     <motion.div 
-                      className="flex items-center text-amber-800"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
+                      className="h-52 relative overflow-hidden"
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <span>Explore</span>
-                      <FaArrowRight className="ml-2" />
+                      <Image
+                        src={imagePath}
+                        alt={category.name}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-amber-900/80 to-transparent flex items-end">
+                        <h3 className="text-xl font-semibold text-white p-4">
+                          {category.name}
+                        </h3>
+                      </div>
                     </motion.div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                    <div className="p-4">
+                      <p className="text-gray-600 mb-4">{category.description}</p>
+                      <motion.div 
+                        className="flex items-center text-amber-800"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <span>Explore</span>
+                        <FaArrowRight className="ml-2" />
+                      </motion.div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

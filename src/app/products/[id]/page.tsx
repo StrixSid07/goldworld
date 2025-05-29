@@ -99,8 +99,12 @@ function ProductContent() {
         <div className="flex flex-col md:flex-row">
           {/* Product Image */}
           <div className="md:w-1/2">
-            <div className="h-72 md:h-full bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500 text-xl">{product.name}</span>
+            <div className="h-72 md:h-full relative bg-gray-200">
+              <img 
+                src={product.image} 
+                alt={product.name}
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
 

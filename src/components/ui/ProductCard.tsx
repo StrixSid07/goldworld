@@ -47,22 +47,21 @@ const ProductCard = ({
       whileHover={{ y: -5 }}
     >
       <div className="relative h-48 sm:h-64 bg-gray-200">
-        {/* Use a placeholder div until real images are available */}
+        {/* Display the product image */}
         <motion.div 
-          className="absolute inset-0 flex items-center justify-center bg-gray-200"
+          className="absolute inset-0"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="text-gray-500">{name}</span>
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            style={{ objectFit: 'cover' }}
+            priority={id === "gc001" || id === "j001" || id === "gb001"}
+          />
         </motion.div>
-        {/* Uncomment when real images are available
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-        />
-        */}
       </div>
 
       <div className="p-4 flex flex-col flex-grow">

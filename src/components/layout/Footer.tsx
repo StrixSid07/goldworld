@@ -177,7 +177,7 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p>&copy; {currentYear} GoldWorld. All rights reserved.</p>
+          <p>&copy; {currentYear} TheGoldWorld. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
