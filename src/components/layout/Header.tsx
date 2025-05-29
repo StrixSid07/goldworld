@@ -62,6 +62,7 @@ const Header = () => {
                   height={180}
                   className="object-contain rounded-md"
                   priority
+                  unoptimized={true}
                 />
               </div>
             </Link>

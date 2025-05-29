@@ -418,6 +418,7 @@ export default function CheckoutPage() {
                   src="/images/RazorPay.png"
                   alt="RazorPay"
                   className="h-24"
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
               <FaLock className="text-amber-800" />

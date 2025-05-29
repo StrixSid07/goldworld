@@ -13,6 +13,7 @@ const nextConfig = {
   images: {
     domains: ['source.unsplash.com', 'img.freepik.com'],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
   experimental: {
     optimizeCss: true,      // Enable CSS optimization
@@ -23,6 +24,7 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console logs in production
   },
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
 };
 
 export default nextConfig; 
