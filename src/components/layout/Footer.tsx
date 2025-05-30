@@ -43,7 +43,7 @@ const Footer = () => {
                   alt="GoldWorld Logo"
                   width={144}
                   height={144}
-                  className="object-contain"
+                  className="object-contain rounded-md"
                   unoptimized={true}
                 />
               </div>

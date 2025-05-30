@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import FadeIn from "@/components/animations/FadeIn";
 import AnimateInView from "@/components/animations/AnimateInView";
 import Image from "next/image";
+import StoreLocation from "@/components/ui/StoreLocation";
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
@@ -365,6 +366,25 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Store Location Section */}
+      <section className="py-16 bg-amber-50">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-amber-900 text-center">
+              Visit Our Store
+            </h2>
+          </motion.div>
+          <div className="max-w-3xl mx-auto">
+            <StoreLocation />
+          </div>
         </div>
       </section>
 

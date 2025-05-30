@@ -31,7 +31,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#b45309" />
       </head>
-      <body className="min-h-screen flex flex-col bg-amber-50">
+      <body className="min-h-screen flex flex-col bg-amber-50 custom-scrollbar">
         <CartProvider>
           <Header />
           <main className="flex-grow">

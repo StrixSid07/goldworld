@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane } from "react-icons/fa";
+import MapComponent from "@/components/ui/MapComponent";
 
 interface FormData {
   name: string;
@@ -152,9 +153,15 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-            <p className="text-gray-600">Map Location</p>
+          {/* Map Component */}
+          <div className="mt-4">
+            <h3 className="font-semibold text-amber-900 mb-3">Our Location</h3>
+            <MapComponent 
+              latitude={23.254638926638993} 
+              longitude={72.6568969776599} 
+              name="GoldWorld"
+            />
+            <p className="text-gray-600 text-sm mt-2">Click on the marker for directions</p>
           </div>
         </div>
 
